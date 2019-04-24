@@ -1,0 +1,63 @@
+.runners-post {
+    margin: 30px;
+}
+
+.post {
+    &__headline {
+        display: block;
+        background-color: #e1f5fe;
+        color: black;
+        .dyaco-headline();
+        padding: 8px 0 8px 8px;
+    }
+
+    &__item {
+        display: block;
+        padding: 8px 0 8px 8px;
+        border-bottom: 0.7px solid grey;
+        &:hover {
+            background-color: #e1f5fe;
+        }
+    }
+
+    &__date {
+        position: relative;
+        display: inline-block;
+        width: 93px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 1px;
+            height: 20px;
+            background-color: grey;
+        }
+    }
+
+    &__title {
+        padding-left: 5px;
+        color: black;
+    }
+}
+
+
+.pagination {
+    margin-top: 5px;
+    text-align: center;
+    li {
+        display: inline-block;
+        float: left;
+        
+        a {
+            display: block;
+            padding: 6px 12px;
+            background-color: #fff;
+            border: 1px solid #efefef;
+        }
+    }
+}
+
+
+
+
