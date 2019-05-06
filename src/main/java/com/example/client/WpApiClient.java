@@ -3,18 +3,25 @@
  */
  package com.example.client;
 
-import com.example.entity.ArticleData;
-import com.example.entity.MediaData;
-import com.example.entity.PageablePostData;
+import java.util.List;
+
+import com.example.wordpress.resource.Category;
+import com.example.wordpress.resource.Media;
+import com.example.wordpress.resource.PageablePost;
+import com.example.wordpress.resource.Post;
 
 public interface WpApiClient {
 
-	PageablePostData getPosts();
+	PageablePost getPosts();
 
-	PageablePostData getPosts(final int page);
+	PageablePost getPostsForPage(final int page);
 
-	ArticleData getArticle(final String id);
+	Post getPostForId(final int id);
 
-	MediaData getMedia(final int id);
+	List<Post> getPostsForCategory(int id);
+
+	Media getMedia(final int id);
+
+	Category getCategory(final int id);
 
 }

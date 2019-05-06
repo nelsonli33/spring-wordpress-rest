@@ -1,7 +1,7 @@
 /*
  * 
  */
- package com.example.entity;
+ package com.example.wordpress.resource;
 
 import java.util.Date;
 
@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MediaData {
+public class Media {
 
 	private int id;
 	private Date date;
-	private BaseRenderedData guid;
+	private BaseRendered guid;
 	private Date modified;
 	private String slug;
 	private String type;
@@ -24,8 +24,8 @@ public class MediaData {
 	private String pingStatus;
 	@JsonProperty("alt_text")
 	private String altText;
-	private BaseRenderedData description;
-	private BaseRenderedData caption;
+	private BaseRendered description;
+	private BaseRendered caption;
 	@JsonProperty("media_type")
 	private String mediaType;
 	@JsonProperty("mime_type")
@@ -49,11 +49,11 @@ public class MediaData {
 		this.date = date;
 	}
 
-	public BaseRenderedData getGuid() {
+	public BaseRendered getGuid() {
 		return guid;
 	}
 
-	public void setGuid(final BaseRenderedData guid) {
+	public void setGuid(final BaseRendered guid) {
 		this.guid = guid;
 	}
 
@@ -113,19 +113,19 @@ public class MediaData {
 		this.altText = altText;
 	}
 
-	public BaseRenderedData getDescription() {
+	public BaseRendered getDescription() {
 		return description;
 	}
 
-	public void setDescription(final BaseRenderedData description) {
+	public void setDescription(final BaseRendered description) {
 		this.description = description;
 	}
 
-	public BaseRenderedData getCaption() {
+	public BaseRendered getCaption() {
 		return caption;
 	}
 
-	public void setCaption(final BaseRenderedData caption) {
+	public void setCaption(final BaseRendered caption) {
 		this.caption = caption;
 	}
 

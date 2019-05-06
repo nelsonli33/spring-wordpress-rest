@@ -20,10 +20,10 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.client.WpApiClient;
-import com.example.entity.ArticleData;
-import com.example.entity.MediaData;
-import com.example.entity.PageablePostData;
-import com.example.entity.PostData;
+import com.example.wordpress.resource.Category;
+import com.example.wordpress.resource.Media;
+import com.example.wordpress.resource.PageablePost;
+import com.example.wordpress.resource.Post;
 
 @Component(value = "wpApiClient")
 public class DefaultWpApiClient implements WpApiClient {
@@ -37,12 +37,12 @@ public class DefaultWpApiClient implements WpApiClient {
 
 
 	@Override
-	public PageablePostData getPosts() {
-		return getPosts(1);
+	public PageablePost getPosts() {
+		return getPostsForPage(1);
 	}
 
 	@Override
-	public PageablePostData getPosts(final int page) {
+	public PageablePost getPostsForPage(final int page) {
 		URI targetUrl = UriComponentsBuilder.fromUriString(WORDPRESS_DOMAIN).path("/wp-json/wp/v2/posts").build()
 				.toUri();
 
@@ -51,48 +51,57 @@ public class DefaultWpApiClient implements WpApiClient {
 					.queryParam("page", page).build().toUri();
 		}
 
-		final ResponseEntity<List<PostData>> postsResp = restTemplate.exchange(
+		final ResponseEntity<List<Post>> postsResp = restTemplate.exchange(
 				targetUrl, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<PostData>>() {
+				new ParameterizedTypeReference<List<Post>>() {
 				});
-
-		final List<PostData> posts = postsResp.getBody();
+		final List<Post> posts = postsResp.getBody();
 		final HttpHeaders headers = postsResp.getHeaders();
 		final int totalPages = Integer.parseInt(headers.getFirst("X-WP-TotalPages"));
 
-		final PageablePostData pageablePostData = new PageablePostData();
-		pageablePostData.setPosts(posts);
-		pageablePostData.setPage(page);
-		pageablePostData.setTotalPages(totalPages);
-		return pageablePostData;
-
+		final PageablePost pageablePost = new PageablePost();
+		pageablePost.setPosts(posts);
+		pageablePost.setTotalPages(totalPages);
+		return pageablePost;
 	}
+
+
 
 	@Override
-	public ArticleData getArticle(final String id) {
+	public List<Post> getPostsForCategory(final int id) {
+		final URI targetUrl = UriComponentsBuilder.fromUriString(WORDPRESS_DOMAIN).path("/wp-json/wp/v2/posts")
+				.queryParam("categories", id).queryParam("orderby", "date").build().toUri();
+		final ResponseEntity<List<Post>> postsResp = restTemplate.exchange(targetUrl, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Post>>() {
+				});
 
-		final PostData post = restTemplate.getForObject(WORDPRESS_DOMAIN + "/wp-json/wp/v2/posts/{id}", PostData.class,
-				id);
-		final MediaData media = getMedia(post.getFeaturedMedia());
-		final ArticleData article = new ArticleData();
-		article.setPost(post);
-		article.setMedia(media);
-		return article;
-
+		final List<Post> posts = postsResp.getBody();
+		return posts;
 	}
+
 
 	@Override
-	public MediaData getMedia(final int id) {
-		final MediaData media = restTemplate.getForObject(WORDPRESS_DOMAIN + "/wp-json/wp/v2/media/{id}",
-				MediaData.class, id);
-		return media;
+	public Post getPostForId(final int id) {
+		return restTemplate.getForObject(WORDPRESS_DOMAIN + "/wp-json/wp/v2/posts/{id}", Post.class, id);
 	}
 
+
+	@Override
+	public Media getMedia(final int id) {
+		return restTemplate.getForObject(WORDPRESS_DOMAIN + "/wp-json/wp/v2/media/{id}",
+				Media.class, id);
+	}
+
+
+	@Override
+	public Category getCategory(final int id) {
+		return restTemplate.getForObject(WORDPRESS_DOMAIN + "/wp-json/wp/v2/categories/{id}",
+				Category.class, id);
+	}
 
 	public void setRestTemplate(final RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
-
 
 
 }

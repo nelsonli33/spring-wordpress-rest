@@ -1,14 +1,13 @@
 /*
  * 
  */
- package com.example.entity;
+ package com.example.data;
 
 import java.util.List;
 
 public class PageablePostData {
 
 	private List<PostData> posts;
-	private int page;
 	private int totalPages;
 
 	public List<PostData> getPosts() {
@@ -19,13 +18,6 @@ public class PageablePostData {
 		this.posts = posts;
 	}
 
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(final int page) {
-		this.page = page;
-	}
 
 	public int getTotalPages() {
 		return totalPages;

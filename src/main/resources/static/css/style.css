@@ -136,6 +136,9 @@ h1 {
   font-weight: bold;
   line-height: 1.2;
 }
+ul {
+  list-style: none;
+}
 p {
   padding-bottom: 0.5rem;
   line-height: 1.6;
@@ -144,11 +147,9 @@ p {
 a {
   text-decoration: none;
 }
-.d-container {
-  max-width: 870px;
+.home {
+  max-width: 960px;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 .dyaco-headline {
   font-size: 16px;
@@ -160,7 +161,7 @@ a {
   font-weight: 400;
   line-height: 1.571;
 }
-.dyaco-post {
+.runners-post {
   margin: 30px;
 }
 .post__headline {
@@ -211,6 +212,26 @@ a {
   background-color: #fff;
   border: 1px solid #efefef;
 }
+.main-dyaco-news {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.main-dyaco-news .news__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.main-dyaco-news .news__list .news__item {
+  padding: 6px;
+}
+.d-container {
+  max-width: 870px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .article time {
   display: block;
   margin-bottom: 1rem;
@@ -232,4 +253,42 @@ a {
 .article .feature-media a img {
   width: 100%;
   height: auto;
+}
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  word-wrap: break-word;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  background-clip: border-box;
+}
+.card .card-img {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.card .card-img img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card .card-body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 0.6rem;
+}
+.card a {
+  color: #000;
+}
+.card--small {
+  width: 220px;
 }

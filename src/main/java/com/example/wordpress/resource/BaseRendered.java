@@ -1,11 +1,11 @@
 /*
  * 
  */
-package com.example.entity;
+package com.example.wordpress.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BaseRenderedData {
+public class BaseRendered {
 
 	private String rendered;
 	@JsonProperty(value = "protected", required = false)
