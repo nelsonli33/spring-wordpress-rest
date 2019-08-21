@@ -12,16 +12,16 @@
 		<article class="article">
 			<section class="headline">
 				<div class="meta">
-					<h1 class="title"><c:out value="${postData.title}" escapeXml="false" /></h1>
-					<time><fmt:formatDate pattern="yyyy-MM-dd" value="${postData.date}" /></time>
+					<h1 class="title"><c:out value="${post.title.rendered}" escapeXml="false" /></h1>
+					<time><fmt:formatDate pattern="yyyy-MM-dd" value="${post.date}" /></time>
 				</div>
 			</section>
 			<hr>
 			<section class="content">
 				<div class="feature-media">
-					<c:out value="${postData.media.description}" escapeXml="false" />
+					<img src="${post.featuredMediaUrl}" />
 				</div>
-				<c:out value="${postData.content}" escapeXml="false" />
+				<c:out value="${post.content.rendered}" escapeXml="false" />
 			</section>
 		</article>
 	</div>

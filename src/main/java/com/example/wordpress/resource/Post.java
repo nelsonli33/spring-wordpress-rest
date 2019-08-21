@@ -23,8 +23,8 @@ public class Post {
 	private BaseRendered title;
 	private BaseRendered content;
 	private BaseRendered excerpt;
-	@JsonProperty("featured_media")
-	private int featuredMedia;
+	@JsonProperty("jetpack_featured_media_url")
+	private String featuredMediaUrl;
 	private int author;
 	private List<Integer> categories;
 	private List<Integer> tags;
@@ -113,13 +113,14 @@ public class Post {
 		this.excerpt = excerpt;
 	}
 
-	public int getFeaturedMedia() {
-		return featuredMedia;
+	public String getFeaturedMediaUrl() {
+		return featuredMediaUrl;
 	}
 
-	public void setFeaturedMedia(final int featuredMedia) {
-		this.featuredMedia = featuredMedia;
+	public void setFeaturedMediaUrl(String featuredMediaUrl) {
+		this.featuredMediaUrl = featuredMediaUrl;
 	}
+
 	public int getAuthor() {
 		return author;
 	}

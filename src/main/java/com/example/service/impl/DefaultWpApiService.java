@@ -1,7 +1,7 @@
 /*
  * 
  */
- package com.example.client.impl;
+ package com.example.service.impl;
 
 
 import java.net.URI;
@@ -19,16 +19,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.example.client.WpApiClient;
+import com.example.service.WpApiService;
 import com.example.wordpress.resource.Category;
 import com.example.wordpress.resource.Media;
 import com.example.wordpress.resource.PageablePost;
 import com.example.wordpress.resource.Post;
 
-@Component(value = "wpApiClient")
-public class DefaultWpApiClient implements WpApiClient {
+@Component(value = "wpApiService")
+public class DefaultWpApiService implements WpApiService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DefaultWpApiClient.class);
+	private static final Logger logger = LoggerFactory.getLogger(DefaultWpApiService.class);
 
 	private static String WORDPRESS_DOMAIN = "https://runners-blog.com";
 

@@ -1,7 +1,7 @@
 /*
  * 
  */
- package com.example.client;
+ package com.example.service;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.example.wordpress.resource.Media;
 import com.example.wordpress.resource.PageablePost;
 import com.example.wordpress.resource.Post;
 
-public interface WpApiClient {
+public interface WpApiService {
 
 	PageablePost getPosts();
 
